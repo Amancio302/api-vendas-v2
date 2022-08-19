@@ -17,14 +17,15 @@ import { CreateOrdersProducts1609038202583 } from './migrations/1609038202583-Cr
 import { AddOrderIdToOrdersProducts1609038414735 } from './migrations/1609038414735-AddOrderIdToOrdersProducts';
 import { AddProductIdToOrdersProducts1609038674490 } from './migrations/1609038674490-AddProductIdToOrdersProducts';
 import { AddOrderFieldtoOrders1619889809717 } from './migrations/1619889809717-AddOrderFieldtoOrders';
+import db from '@config/db';
 
 export const dataSource = new DataSource({
   type: 'postgres',
-  host: 'db',
-  port: 5432,
-  username: 'postgres',
-  password: 'docker',
-  database: 'apivendas',
+  host: db.postgres.host,
+  port: db.postgres.port,
+  username: db.postgres.user,
+  password: db.postgres.password,
+  database: db.postgres.db,
   entities: [User, UserToken, Customer, Order, OrdersProducts, Product],
   migrations: [
     CreateProducts1607437608841,
